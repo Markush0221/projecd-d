@@ -5,38 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROJECT D | Official Web Site</title>
     <style>
-        html { scroll-behavior: smooth; }
         body {
             background-color: #0b0b0b;
             color: #ffffff;
-            font-family: sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             margin: 0;
             padding: 0;
             text-transform: uppercase;
         }
         header {
             border-bottom: 4px solid #ffcc00;
-            padding: 20px;
+            padding: 30px 20px;
             text-align: center;
             background: #1a1a1a;
         }
         h1 { font-size: 3rem; color: #ffcc00; margin: 0; letter-spacing: 5px; }
+        .subtitle { color: #888; font-size: 0.8rem; letter-spacing: 2px; }
+        
         nav {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            padding: 15px;
+            gap: 25px;
+            padding: 20px;
             background: #111;
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid #333;
         }
-        nav a { color: #fff; text-decoration: none; font-weight: bold; }
+        nav a { 
+            color: #fff; 
+            text-decoration: none; 
+            font-weight: bold; 
+            cursor: pointer;
+            transition: 0.3s;
+        }
         nav a:hover { color: #ffcc00; }
-        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
+
+        /* Контейнеры секций */
+        .container { 
+            max-width: 1100px; 
+            margin: 40px auto; 
+            padding: 20px; 
+            display: none; /* Скрыто по умолчанию */
+        }
+        
+        /* Класс для активной вкладки */
+        .active-tab { 
+            display: block !important; 
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 20px;
         }
         .car-card {
@@ -46,11 +73,26 @@
             transition: 0.3s;
         }
         .car-card:hover { transform: scale(1.02); background: #222; }
+        
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid #ffcc00;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
         h2 { color: #ffcc00; margin-top: 0; }
         .spec-list { list-style: none; padding: 0; color: #bbb; font-size: 0.9rem; }
-        .spec-list li { border-bottom: 1px solid #333; margin-bottom: 5px; }
-        
-        /* Modal */
+        .spec-list li { border-bottom: 1px solid #333; margin-bottom: 8px; padding-bottom: 4px; }
+        .spec-list b { color: #ffcc00; }
+
+        table { width: 100%; border-collapse: collapse; background: #1a1a1a; }
+        th { background: #ffcc00; color: #000; padding: 12px; text-align: left; }
+        td { padding: 12px; border-bottom: 1px solid #333; }
+
+        /* Модалка */
         .modal {
             display: none;
             position: fixed;
@@ -68,77 +110,99 @@
             text-transform: none;
         }
         .close { position: absolute; right: 20px; top: 10px; color: #ffcc00; font-size: 30px; cursor: pointer; }
+        footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>PROJECT D</h1>
-    <p style="color: #888;">Kanto Expedition / Fastest Street Racing Theory</p>
+    <div class="subtitle">Kanto Expedition / Fastest Street Racing Theory</div>
 </header>
 
 <nav>
-    <a href="#drivers-section">DRIVERS</a>
-    <a href="#cars-section">CARS</a>
-    <a href="#records-section">RECORDS</a>
+    <a onclick="showTab('cars-section')">CARS</a>
+    <a onclick="showTab('drivers-section')">DRIVERS</a>
+    <a onclick="showTab('records-section')">RECORDS</a>
 </nav>
 
-<div id="cars-section" class="container">
-    <h2 style="text-align: center;">Battle Machines</h2>
+<div id="cars-section" class="container active-tab">
+    <h2
+
+
+style="text-align: center;">Battle Machines</h2>
     <div class="card-grid">
         <div class="car-card">
             <h2>Toyota AE86</h2>
-            <img src="ae86.jpg" onclick="showInfo('ae86')" style="width:100%; height:200px; object-fit:cover; cursor:pointer;">
+            <img src="ae86.jpg" class="card-img" onclick="showInfo('ae86')">
             <ul class="spec-list">
-                <li>Driver: Takumi Fujiwara</li>
-                <li>Team: Project D</li>
+                <li><b>Driver:</b> Takumi Fujiwara</li>
+                <li><b>Engine:</b> 4A-GE 20V (Group A Spec)</li>
+                <li><b>Team:</b> Project D</li>
             </ul>
         </div>
         <div class="car-card">
             <h2>Mazda RX-7 FD3S</h2>
-            <img src="fd3s.jpg" onclick="showInfo('fd3s')" style="width:100%; height:200px; object-fit:cover; cursor:pointer;">
+            <img src="fd3s.jpg" class="card-img" onclick="showInfo('fd3s')">
             <ul class="spec-list">
-                <li>Driver: Keisuke Takahashi</li>
-                <li>Team: Project D</li>
+                <li><b>Driver:</b> Keisuke Takahashi</li>
+                <li><b>Engine:</b> 13B-REW (Twin-Turbo)</li>
+                <li><b>Team:</b> Project D</li>
             </ul>
         </div>
     </div>
 </div>
 
 <div id="drivers-section" class="container">
-    <h2 style="text-align:center; border-bottom: 2px solid #ffcc00;">Drivers</h2>
+    <h2 style="text-align:center;">Project D Drivers</h2>
     <div class="card-grid">
         <div class="car-card">
             <h2>Takumi Fujiwara</h2>
-            <img src="takumi_photo.jpg" onclick="showInfo('takumi')" style="width:100%; height:250px; object-fit:cover; cursor:pointer;">
-            <p>Downhill Ace</p>
+            <img src="takumi_photo.jpg" class="card-img" onclick="showInfo('takumi')">
+            <p style="color:#ffcc00;">Downhill Specialist</p>
+            <ul class="spec-list">
+                <li><b>Team:</b> Akina SpeedStars</li>
+                <li><b>Car:</b> Toyota AE86</li>
+            </ul>
         </div>
         <div class="car-card">
             <h2>Keisuke Takahashi</h2>
-            <img src="keisuke_photo.jp
-
-
-g" onclick="showInfo('keisuke')" style="width:100%; height:250px; object-fit:cover; cursor:pointer;">
-            <p>Uphill Ace</p>
+            <img src="keisuke_photo.jpg" class="card-img" onclick="showInfo('keisuke')">
+            <p style="color:#ffcc00;">Uphill Specialist</p>
+            <ul class="spec-list">
+                <li><b>Team:</b> RedSuns</li>
+                <li><b>Car:</b> Mazda RX-7 FD3S</li>
+            </ul>
         </div>
     </div>
 </div>
 
 <div id="records-section" class="container">
     <h2 style="text-align:center;">Expedition Records</h2>
-    <table style="width:100%; border-collapse: collapse; background:#1a1a1a;">
-        <tr style="background:#ffcc00; color:#000;">
-            <th style="padding:10px;">Course</th><th style="padding:10px;">Driver</th><th style="padding:10px;">Result</th>
-        </tr>
-        <tr>
-            <td style="padding:10px; border-bottom:1px solid #333;">Mt. Akina</td>
-            <td style="padding:10px; border-bottom:1px solid #333;">Takumi</td>
-            <td style="padding:10px; border-bottom:1px solid #333; color:#ffcc00;">WIN</td>
-        </tr>
+    <table>
+        <thead>
+            <tr>
+                <th>Course (Трасса)</th>
+                <th>Driver</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Mount Akina</td>
+                <td>Takumi</td>
+                <td style="color:#ffcc00;">WIN [NEW RECORD]</td>
+            </tr>
+            <tr>
+                <td>Myogi</td>
+                <td>Keisuke</td>
+                <td style="color:#ffcc00;">WIN</td>
+            </tr>
+        </tbody>
     </table>
 </div>
 
-<footer style="text-align:center; padding:40px; color:#444;">PROJECT D OFFICIAL / 2026</footer>
+<footer>PROJECT D OFFICIAL / 2026 / BY MARK IVANOV</footer>
 
 <div id="carModal" class="modal">
     <div class="modal-content">
@@ -149,15 +213,23 @@ g" onclick="showInfo('keisuke')" style="width:100%; height:250px; object-fit:cov
 
 <script>
 const carData = {
-    ae86: { title: "AE86 Trueno", desc: "Легенда Акины.", specs: "4A-GE Group A" },
-    fd3s: { title: "RX-7 FD3S", desc: "Ас RedSuns.", specs: "13B Twin Turbo" },
-    takumi: { title: "Takumi Fujiwara", desc: "Мастер дрифта в сточных канавах.", specs: "Project D Downhill Ace" },
-    keisuke: { title: "Keisuke Takahashi", desc: "Мастер скорости на подъемах.", specs: "Project D Uphill Ace" }
+    ae86: { title: "AE86 Trueno", desc: "Легенда Акины. Мотор от Group A.", specs: "4A-GE 20V Silver Top" },
+    fd3s: { title: "RX-7 FD3S", desc: "Машина Кэйсукэ. Специализация: подъемы.", specs: "13B Twin Turbo" },
+    takumi: { title: "Takumi Fujiwara", desc: "Король спуска. Мастер дрифта.", specs: "Team: Project D" },
+    keisuke: { title: "Keisuke Takahashi", desc: "Король подъема. Техничная езда.", specs: "Team: Project D" }
 };
+
+// Функция переключения вкладок
+function showTab(id) {
+    const containers = document.querySelectorAll('.container');
+    containers.forEach(c => c.classList.remove('active-tab'));
+    document.getElementById(id).classList.add('active-tab');
+    window.scrollTo(0,0);
+}
 
 function showInfo(key) {
     const data = carData[key];
-    document.getElementById('modalBody').innerHTML = `<h2>${data.title}</h2><p>${data.desc}</p><p><b>Спеки:</b> ${data.specs}</p>`;
+    document.getElementById('modalBody').innerHTML = `<h2>${data.title}</h2><p>${data.desc}</p><p><b>Инфо:</b> ${data.specs}</p>`;
     document.getElementById('carModal').style.display = "block";
 }
 function closeModal() { document.getElementById('carModal').style.display = "none"; }
