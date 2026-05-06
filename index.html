@@ -3,238 +3,392 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROJECT D | Official Web Site</title>
+    <title>PROJECT D | MANGA EDITION</title>
     <style>
+        /* MANGA STYLE CSS */
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --yellow: #ffcc00;
+            --gray: #f0f0f0;
+        }
+
         body {
-            background-color: #0b0b0b;
-            color: #ffffff;
-            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--white);
+            color: var(--black);
+            font-family: 'Arial Black', sans-serif;
             margin: 0;
             padding: 0;
-            text-transform: uppercase;
+            overflow-x: hidden;
+            background-image: radial-gradient(var(--gray) 1px, transparent 1px);
+            background-size: 20px 20px; /* Эффект скринтона (точек) */
         }
+
         header {
-            border-bottom: 4px solid #ffcc00;
-            padding: 30px 20px;
+            background: var(--black);
+            color: var(--white);
+            padding: 40px 20px;
             text-align: center;
-            background: #1a1a1a;
+            border-bottom: 8px solid var(--black);
+            transform: skewY(-1deg);
+            margin-top: -10px;
         }
-        h1 { font-size: 3rem; color: #ffcc00; margin: 0; letter-spacing: 5px; }
-        .subtitle { color: #888; font-size: 0.8rem; letter-spacing: 2px; }
-        
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            letter-spacing: -2px;
+            text-shadow: 4px 4px var(--yellow);
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--yellow);
+            letter-spacing: 5px;
+        }
+
+        /* NAVIGATION */
         nav {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 15px;
             padding: 20px;
-            background: #111;
+            background: var(--white);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid #333;
+            border-bottom: 5px solid var(--black);
         }
-        nav a { 
-            color: #fff; 
-            text-decoration: none; 
-            font-weight: bold; 
+
+        nav a {
+            color: var(--black);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 3px solid var(--black);
+            transition: 0.2s;
             cursor: pointer;
-            transition: 0.3s;
-        }
-        nav a:hover { color: #ffcc00; }
-
-        /* Контейнеры секций */
-        .container { 
-            max-width: 1100px; 
-            margin: 40px auto; 
-            padding: 20px; 
-            display: none; /* Скрыто по умолчанию */
-        }
-        
-        /* Класс для активной вкладки */
-        .active-tab { 
-            display: block !important; 
-            animation: fadeIn 0.4s ease-in-out;
+            background: var(--white);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        nav a:hover, nav a.active-link {
+            background: var(--black);
+            color: var(--white);
+            box-shadow: 5px 5px 0 var(--yellow);
+            transform: translate(-2px, -2px);
         }
 
+        /* CONTAINERS */
+        .container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 20px;
+            display: none;
+        }
+
+        .active-section {
+            display: block !important;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* CARDS */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
         }
-        .car-card {
-            border-left: 5px solid #ffcc00;
-            background: #1a1a1a;
-            padding: 20px;
+
+        .manga-card {
+            border: 5px solid var(--black);
+            background: var(--white);
+            padding: 0;
+            position: relative;
             transition: 0.3s;
+            box-shadow: 15px 15px 0 var(--black);
         }
-        .car-card:hover { transform: scale(1.02); background: #222; }
-        
+
+        .manga-card:hover {
+            transform: scale(1.02);
+            box-shadow: 15px 15px 0 var(--yellow);
+        }
+
+        .manga-card::before {
+            content: "DORIFTO!";
+            position: absolute;
+            top: -20px;
+            right: -10px;
+            background: var(--yellow);
+            color: var(--black);
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            border: 3px solid var(--black);
+            font-weight: bold;
+            z-index: 2;
+        }
+
         .card-img {
             width: 100%;
-            height: 200px;
+            height: 300px;
             object-fit: cover;
-            border-bottom: 2px solid #ffcc00;
-            margin-bottom: 15px;
-            cursor: pointer;
+            border-bottom: 5px solid var(--black);
+            filter: grayscale(1) contrast(1.2); /* Эффект манги */
+            transition: 0.3s;
         }
 
-        h2 { color: #ffcc00; margin-top: 0; }
-        .spec-list { list-style: none; padding: 0; color: #bbb; font-size: 0.9rem; }
-        .spec-list li { border-bottom: 1px solid #333; margin-bottom: 8px; padding-bottom: 4px; }
-        .spec-list b { color: #ffcc00; }
+        .manga-card:hover .card-img {
+            filter: grayscale(0) contrast(1);
+        }
 
-        table { width: 100%; border-collapse: collapse; background: #1a1a1a; }
-        th { background: #ffcc00; color: #000; padding: 12px; text-align: left; }
-        td { padding: 12px; border-bottom: 1px solid #333; }
+        .card-content {
+            padding: 20px;
+        }
 
-        /* Модалка */
+        .ca
+
+
+rd-title {
+            font-size: 1.8rem;
+            margin: 0 0 15px 0;
+            background: var(--black);
+            color: var(--white);
+            display: inline-block;
+            padding: 5px 15px;
+            transform: rotate(-2deg);
+        }
+
+        .description {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            text-transform: none; /* Читабельный текст */
+            color: #333;
+        }
+
+        /* TABLES */
+        table {
+            width: 100%;
+            border: 5px solid var(--black);
+            background: var(--white);
+            border-collapse: collapse;
+        }
+
+        th {
+            background: var(--black);
+            color: var(--white);
+            padding: 20px;
+            text-align: left;
+            font-size: 1.2rem;
+        }
+
+        td {
+            padding: 20px;
+            border-bottom: 3px solid var(--black);
+            font-family: 'Segoe UI', sans-serif;
+            text-transform: none;
+        }
+
+        tr:nth-child(even) { background: #f9f9f9; }
+
+        /* MODAL */
         .modal {
             display: none;
             position: fixed;
             z-index: 1000;
             left: 0; top: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.8);
         }
+
         .modal-content {
-            background: #1a1a1a;
-            margin: 10% auto;
-            padding: 30px;
-            border: 2px solid #ffcc00;
-            max-width: 500px;
+            background: var(--white);
+            margin: 5% auto;
+            padding: 40px;
+            border: 8px solid var(--black);
+            max-width: 600px;
+            box-shadow: 20px 20px 0 var(--yellow);
             position: relative;
-            text-transform: none;
         }
-        .close { position: absolute; right: 20px; top: 10px; color: #ffcc00; font-size: 30px; cursor: pointer; }
-        footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; }
+
+        .close {
+            position: absolute;
+            right: 20px; top: 10px;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px;
+            background: var(--black);
+            color: var(--white);
+            margin-top: 100px;
+        }
     </style>
 </head>
 <body>
 
 <header>
     <h1>PROJECT D</h1>
-    <div class="subtitle">Kanto Expedition / Fastest Street Racing Theory</div>
+    <div class="subtitle">STREET RACING THEORY / FINAL STAGE</div>
 </header>
 
 <nav>
-    <a onclick="showTab('cars-section')">CARS</a>
-    <a onclick="showTab('drivers-section')">DRIVERS</a>
-    <a onclick="showTab('records-section')">RECORDS</a>
+    <a onclick="openTab(event, 'cars-section')" class="active-link">CARS</a>
+    <a onclick="openTab(event, 'drivers-section')">DRIVERS</a>
+    <a onclick="openTab(event, 'tactics-section')">TACTICS</a>
+    <a onclick="openTab(event, 'records-section')">RECORDS</a>
 </nav>
 
-<div id="cars-section" class="container active-tab">
-    <h2
-
-
-style="text-align: center;">Battle Machines</h2>
+<div id="cars-section" class="container active-section">
     <div class="card-grid">
-        <div class="car-card">
-            <h2>Toyota AE86</h2>
-            <img src="ae86.jpg" class="card-img" onclick="showInfo('ae86')">
-            <ul class="spec-list">
-                <li><b>Driver:</b> Takumi Fujiwara</li>
-                <li><b>Engine:</b> 4A-GE 20V (Group A Spec)</li>
-                <li><b>Team:</b> Project D</li>
-            </ul>
+        <div class="manga-card" onclick="showInfo('ae86')">
+            <img src="ae86.jpg" class="card-img" alt="AE86">
+            <div class="card-content">
+                <h2 class="card-title">TOYOTA AE86 TRUENO</h2>
+                <div class="description">
+                    Это не просто машина для доставки тофу. Под капотом скрывается <b>4A-GE Group A Spec</b>, способный крутить до 11,000 об/мин. Карбоновый капот, облегченный кузов и идеальная развесовка делают её непобедимой на спусках.
+                </div>
+            </div>
         </div>
-        <div class="car-card">
-            <h2>Mazda RX-7 FD3S</h2>
-            <img src="fd3s.jpg" class="card-img" onclick="showInfo('fd3s')">
-            <ul class="spec-list">
-                <li><b>Driver:</b> Keisuke Takahashi</li>
-                <li><b>Engine:</b> 13B-REW (Twin-Turbo)</li>
-                <li><b>Team:</b> Project D</li>
-            </ul>
+        <div class="manga-card" onclick="showInfo('fd3s')">
+            <img src="fd3s.jpg" class="card-img" alt="FD3S">
+            <div class="card-content">
+                <h2 class="card-title">MAZDA RX-7 FD3S</h2>
+                <div class="description">
+                    "Желтая бестия" Кэйсукэ Такахаши. Полный тюнинг от <b>RE Amemiya</b>. Последовательный двойной турбонаддув обеспечивает мгновенное ускорение на подъемах. Настоящий монстр мощности.
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <div id="drivers-section" class="container">
-    <h2 style="text-align:center;">Project D Drivers</h2>
     <div class="card-grid">
-        <div class="car-card">
-            <h2>Takumi Fujiwara</h2>
-            <img src="takumi_photo.jpg" class="card-img" onclick="showInfo('takumi')">
-            <p style="color:#ffcc00;">Downhill Specialist</p>
-            <ul class="spec-list">
-                <li><b>Team:</b> Akina SpeedStars</li>
-                <li><b>Car:</b> Toyota AE86</li>
-            </ul>
+        <div class="manga-card" onclick="showInfo('takumi')">
+            <img src="takumi_photo.jpg" class="card-img" alt="Takumi">
+            <div class="card-content">
+                <h2 class="card-title">TAKUMI FUJIWARA</h2>
+                <div class="description">
+                    Гений инстинктов. 5 лет поездок по Акине в любую погоду превратили его в призрака спусков. Его коронн
+
+
+ый прием — <b>Blind Attack</b> (атака с выключенными фарами).
+                </div>
+            </div>
         </div>
-        <div class="car-card">
-            <h2>Keisuke Takahashi</h2>
-            <img src="keisuke_photo.jpg" class="card-img" onclick="showInfo('keisuke')">
-            <p style="color:#ffcc00;">Uphill Specialist</p>
-            <ul class="spec-list">
-                <li><b>Team:</b> RedSuns</li>
-                <li><b>Car:</b> Mazda RX-7 FD3S</li>
-            </ul>
+        <div class="manga-card" onclick="showInfo('keisuke')">
+            <img src="keisuke_photo.jpg" class="card-img" alt="Keisuke">
+            <div class="card-content">
+                <h2 class="card-title">KEISUKE TAKAHASHI</h2>
+                <div class="description">
+                    Мастер дисциплины. Бывший лидер банды, ставший профессиональным пилотом. Его техника контроля газа на подъемах считается эталонной в мире уличных гонок.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="tactics-section" class="container">
+    <div class="manga-card" style="padding: 30px;">
+        <h2 class="card-title">THE DOUBLE ACE THEORY</h2>
+        <div class="description" style="font-size: 1.2rem;">
+            Проект Рёске Такахаши базируется на идеальном разделении ролей:
+
+            1. <b>DOWNHILL SPECIALIST:</b> Использование инерции и веса машины. Такуми использует трассу как часть своей подвески.
+
+            2. <b>UPHILL SPECIALIST:</b> Грубая мощь и ювелирный контроль тяги. Кэйсукэ подавляет соперника скоростью на прямых.
+
+            <b>ГЛАВНАЯ ЦЕЛЬ:</b> Уничтожить рекорды всех трасс региона Канто за один сезон.
         </div>
     </div>
 </div>
 
 <div id="records-section" class="container">
-    <h2 style="text-align:center;">Expedition Records</h2>
     <table>
         <thead>
             <tr>
-                <th>Course (Трасса)</th>
-                <th>Driver</th>
-                <th>Result</th>
+                <th>OPPONENT TEAM</th>
+                <th>COURSE</th>
+                <th>RESULT</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Mount Akina</td>
-                <td>Takumi</td>
-                <td style="color:#ffcc00;">WIN [NEW RECORD]</td>
+                <td>Seven Star Leaf</td>
+                <td>Momiji Line</td>
+                <td style="color:red; font-weight:bold;">WIN (STOMP)</td>
             </tr>
             <tr>
-                <td>Myogi</td>
-                <td>Keisuke</td>
-                <td style="color:#ffcc00;">WIN</td>
+                <td>Todoh School</td>
+                <td>Happogahara</td>
+                <td style="color:red; font-weight:bold;">WIN (PRO LEVEL)</td>
+            </tr>
+            <tr>
+                <td>Northern Saitama Alliance</td>
+                <td>Mazase Pass</td>
+                <td style="color:red; font-weight:bold;">WIN</td>
+            </tr>
+            <tr>
+                <td>Purple Shadow</td>
+                <td>Tsukuba Fruit Line</td>
+                <td style="color:red; font-weight:bold;">WIN (GOD FOOT/HAND)</td>
             </tr>
         </tbody>
     </table>
 </div>
 
-<footer>PROJECT D OFFICIAL / 2026 / BY MARK IVANOV</footer>
+<footer>
+    PROJECT D // STREET RACING THEORY // DESIGNED BY MARK IVANOV 2026
+</footer>
 
-<div id="carModal" class="modal">
+<div id="infoModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <div id="modalBody"></div>
+        <div id="modalBody" style="text-transform: none; font-family: sans-serif;"></div>
     </div>
 </div>
 
 <script>
-const carData = {
-    ae86: { title: "AE86 Trueno", desc: "Легенда Акины. Мотор от Group A.", specs: "4A-GE 20V Silver Top" },
-    fd3s: { title: "RX-7 FD3S", desc: "Машина Кэйсукэ. Специализация: подъемы.", specs: "13B Twin Turbo" },
-    takumi: { title: "Takumi Fujiwara", desc: "Король спуска. Мастер дрифта.", specs: "Team: Project D" },
-    keisuke: { title: "Keisuke Takahashi", desc: "Король подъема. Техничная езда.", specs: "Team: Project D" }
-};
+    const data = {
+        ae86: { title: "AE86 Technical Report", text: "Двигатель: 4A-GE (TRD Spec). Мощность: 240 л.с. Особенности: Облегченный карбоновый капот, гоночная подвеска. Такуми использует её как продолжение своего тела." },
+        fd3s: { title: "FD3S Technical Report", text: "Двигатель: 13B-REW (Rotary). Мощность: 350+ л.с. Обвес: RE Amemiya GT-AD. Кэйсукэ тренировал контроль этой мощи, чтобы не терять ни секунды на выходе из поворота." },
+        takumi: { title: "Driver Bio: Takumi", text: "Стиль: Инстинктивный дрифт. Рекордсмен Акины. Его техника Gutter Run позволяет проходить шпильки на скорости, которая кажется невозможной для других." },
+        keisuke: { title: "Driver Bio: Keisuke", text: "Стиль: Силовой дрифт. Первый пилот Project D. Прошел путь от уличного хулигана до самого техничного пилота подъемов в Японии." }
+    };
 
-// Функция переключения вкладок
-function showTab(id) {
-    const containers = document.querySelectorAll('.container');
-    containers.forEach(c => c.classList.remove('active-tab'));
-    document.getElementById(id).classList.add('active-tab');
-    window.scrollTo(0,0);
-}
+    function openTab(evt, tabName) {
+        const containers = document.querySelectorAll('.container');
+        containers.forEach(c => c.classList.remove('active-section'));
+        
+        const links = document.querySelectorAll('nav a');
+        links.forEach(l => l.classList.remove('active-link'));
 
-function showInfo(key) {
-    const data = carData[key];
-    document.getElementById('modalBody').innerHTML = `<h2>${data.title}</h2><p>${data.desc}</p><p><b>Инфо:</b> ${data.specs}</p>`;
-    document.getElementById('carModal').style.display = "block";
-}
-function closeModal() { document.getElementById('carModal').style.display = "none"; }
-window.onclick = (e) => { if(e.target == document.getElementById('carModal')) closeModal(); }
+        document.getElementById(tabName).classList.add('active-section');
+        evt.currentTarget.classList.add('ac
+
+
+tive-link');
+    }
+
+    function showInfo(key) {
+        const item = data[key];
+        document.getElementById('modalBody').innerHTML = `
+            <h2 style="background:black; color:white; display:inline-block; padding:5px 15px;">${item.title}</h2>
+            <p style="font-size:1.1rem; line-height:1.6; margin-top:20px;">${item.text}</p>
+        `;
+        document.getElementById('infoModal').style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById('infoModal').style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('infoModal')) closeModal();
+    }
 </script>
-
 </body>
 </html>
