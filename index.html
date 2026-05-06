@@ -5,149 +5,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROJECT D | Official Web Site</title>
     <style>
-        /* Основные стили Project D */
-        html {
-            scroll-behavior: smooth; /* Плавная прокрутка */
-        }
-        
+        html { scroll-behavior: smooth; }
         body {
             background-color: #0b0b0b;
             color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: sans-serif;
             margin: 0;
             padding: 0;
             text-transform: uppercase;
         }
-
         header {
             border-bottom: 4px solid #ffcc00;
             padding: 20px;
             text-align: center;
-            background: linear-gradient(to bottom, #1a1a1a, #0b0b0b);
+            background: #1a1a1a;
         }
-
-        h1 {
-            font-size: 3rem;
-            letter-spacing: 10px;
-            color: #ffcc00;
-            margin: 0;
-            text-shadow: 2px 2px #000;
-        }
-
-        .subtitle {
-            font-size: 0.8rem;
-            letter-spacing: 5px;
-            color: #888;
-        }
-
+        h1 { font-size: 3rem; color: #ffcc00; margin: 0; letter-spacing: 5px; }
         nav {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 20px;
             padding: 15px;
             background: #111;
-            font-weight: bold;
             position: sticky;
             top: 0;
             z-index: 100;
         }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #ffcc00;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-
+        nav a { color: #fff; text-decoration: none; font-weight: bold; }
+        nav a:hover { color: #ffcc00; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
         .card-grid {
             display: grid;
-            /* Исправленная сетка: карточки будут широкими и адаптивными */
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
         }
-
         .car-card {
             border-left: 5px solid #ffcc00;
             background: #1a1a1a;
             padding: 20px;
-            transition: transform 0.3s;
-            display: flex;
-            flex-direction: column;
+            transition: 0.3s;
         }
-
-        .car-card:hover {
-            transform: skewX(-2deg) scale(1.02);
-            background: #222;
-        }
-
-        h2 {
-            color: #ffcc00;
-            margin-top: 0;
-        }
-
-        .spec-list {
-            list-style: none;
-            padding: 0;
-            font-size: 0.9rem;
-            color: #bbb;
-        }
-
-        .spec-list li {
-            margin-bottom: 5px;
-            border-bottom: 1px solid #333;
-        }
-    
-        /* Стили для всплывающего окна */
+        .car-card:hover { transform: scale(1.02); background: #222; }
+        h2 { color: #ffcc00; margin-top: 0; }
+        .spec-list { list-style: none; padding: 0; color: #bbb; font-size: 0.9rem; }
+        .spec-list li { border-bottom: 1px solid #333; margin-bottom: 5px; }
+        
+        /* Modal */
         .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1000; 
-            left: 0; top: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.9);
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
         }
-
         .modal-content {
-            background-color: #1a1a1a;
+            background: #1a1a1a;
             margin: 10% auto;
             padding: 30px;
             border: 2px solid #ffcc00;
-            width: 85%;
             max-width: 500px;
-            color: white;
-            border-radius: 10px;
             position: relative;
             text-transform: none;
         }
+        .close { position: absolute; right: 20px; top: 10px; color: #ffcc00; font-size: 30px; cursor: pointer; }
+    </style>
+</head>
+<body>
 
-        .close {
-            position: absolute;
-            right: 20px;
-            top: 10px;
-            color: #ffcc00;
-            font-size: 35px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+<header>
+    <h1>PROJECT D</h1>
+    <p style="color: #888;">Kanto Expedition / Fastest Street Racing Theory</p>
+</header>
 
-        .modal-info h2 { 
-            color: #ffcc00; 
-            border-bottom: 1px solid #333; 
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
+<nav>
+    <a href="#drivers-section">DRIVERS</a>
+    <a href="#cars-section">CARS</a>
+    <a href="#records-section">RECORDS</a>
+</nav>
 
-        .specs-list {
-            background: #222;
-            padding: 10px;
-            border-left: 4px solid #ffcc00;
-            margin-top:
+<div id="cars-section" class="container">
+    <h2 style="text-align: center;">Battle Machines</h2>
+    <div class="card-grid">
+        <div class="car-card">
+            <h2>Toyota AE86</h2>
+            <img src="ae86.jpg" onclick="showInfo('ae86')" style="width:100%; height:200px; object-fit:cover; cursor:pointer;">
+            <ul class="spec-list">
+                <li>Driver: Takumi Fujiwara</li>
+                <li>Team: Project D</li>
+            </ul>
+        </div>
+        <div class="car-card">
+            <h2>Mazda RX-7 FD3S</h2>
+            <img src="fd3s.jpg" onclick="showInfo('fd3s')" style="width:100%; height:200px; object-fit:cover; cursor:pointer;">
+            <ul class="spec-list">
+                <li>Driver: Keisuke Takahashi</li>
+                <li>Team: Project D</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="drivers-section" class="container">
+    <h2 style="text-align:center; border-bottom: 2px solid #ffcc00;">Drivers</h2>
+    <div class="card-grid">
+        <div class="car-card">
+            <h2>Takumi Fujiwara</h2>
+            <img src="takumi_photo.jpg" onclick="showInfo('takumi')" style="width:100%; height:250px; object-fit:cover; cursor:pointer;">
+            <p>Downhill Ace</p>
+        </div>
+        <div class="car-card">
+            <h2>Keisuke Takahashi</h2>
+            <img src="keisuke_photo.jp
+
+
+g" onclick="showInfo('keisuke')" style="width:100%; height:250px; object-fit:cover; cursor:pointer;">
+            <p>Uphill Ace</p>
+        </div>
+    </div>
+</div>
+
+<div id="records-section" class="container">
+    <h2 style="text-align:center;">Expedition Records</h2>
+    <table style="width:100%; border-collapse: collapse; background:#1a1a1a;">
+        <tr style="background:#ffcc00; color:#000;">
+            <th style="padding:10px;">Course</th><th style="padding:10px;">Driver</th><th style="padding:10px;">Result</th>
+        </tr>
+        <tr>
+            <td style="padding:10px; border-bottom:1px solid #333;">Mt. Akina</td>
+            <td style="padding:10px; border-bottom:1px solid #333;">Takumi</td>
+            <td style="padding:10px; border-bottom:1px solid #333; color:#ffcc00;">WIN</td>
+        </tr>
+    </table>
+</div>
+
+<footer style="text-align:center; padding:40px; color:#444;">PROJECT D OFFICIAL / 2026</footer>
+
+<div id="carModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
+<script>
+const carData = {
+    ae86: { title: "AE86 Trueno", desc: "Легенда Акины.", specs: "4A-GE Group A" },
+    fd3s: { title: "RX-7 FD3S", desc: "Ас RedSuns.", specs: "13B Twin Turbo" },
+    takumi: { title: "Takumi Fujiwara", desc: "Мастер дрифта в сточных канавах.", specs: "Project D Downhill Ace" },
+    keisuke: { title: "Keisuke Takahashi", desc: "Мастер скорости на подъемах.", specs: "Project D Uphill Ace" }
+};
+
+function showInfo(key) {
+    const data = carData[key];
+    document.getElementById('modalBody').innerHTML = `<h2>${data.title}</h2><p>${data.desc}</p><p><b>Спеки:</b> ${data.specs}</p>`;
+    document.getElementById('carModal').style.display = "block";
+}
+function closeModal() { document.getElementById('carModal').style.display = "none"; }
+window.onclick = (e) => { if(e.target == document.getElementById('carModal')) closeModal(); }
+</script>
+
+</body>
+</html>
