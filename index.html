@@ -96,6 +96,53 @@
             border-bottom: 1px solid #333;
         }
     </style>
+    /* Стили для всплывающего окна (Modal) */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9); /* Затемнение фона */
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    margin: 15% auto;
+    padding: 30px;
+    border: 2px solid #ffcc00; /* Золотая рамка Project D */
+    width: 85%;
+    max-width: 500px;
+    color: white;
+    border-radius: 10px;
+    position: relative;
+    text-transform: none; /* Текст внутри окна будет обычным, не только капсом */
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    color: #ffcc00;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-info h2 { 
+    color: #ffcc00; 
+    border-bottom: 1px solid #333; 
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+.specs-list {
+    background: #222;
+    padding: 10px;
+    border-left: 4px solid #ffcc00;
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
 </head>
 <body>
 
@@ -115,7 +162,7 @@
     <div class="card-grid">
         <div class="car-card">
             <h2>Toyota AE86</h2>
-<img src="ae86.jpg" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid #ffcc00; margin-bottom: 15px;">
+<img src="ae86.jpg" onclick="showInfo('ae86')" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid #ffcc00; margin-bottom: 15px; cursor: pointer;">
             <p>Downhill Specialist</p>
             <ul class="spec-list">
                 <li>Driver: Takumi Fujiwara</li>
@@ -126,7 +173,7 @@
 
         <div class="car-card">
             <h2>Mazda RX-7 FD3S</h2>
-<img src="fd3s.jpg" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid #ffcc00; margin-bottom: 15px;">
+ <img src="fd3s.jpg" onclick="showInfo('fd3s')" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid #ffcc00; margin-bottom: 15px; cursor: pointer;">
             <p>Uphill Specialist</p>
             <ul class="spec-list">
                 <li>Driver: Keisuke Takahashi</li>
@@ -170,4 +217,48 @@
 <footer style="text-align: center; padding: 40px; color: #444; font-size: 0.7rem; border-top: 1px solid #222; margin-top: 50px;">
     STREET RACING THEORY / PROJECT D OFFICIAL PORTAL / 2026 by Mark Ivanov
 </footer>
+    <div id="carModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modalBody" class="modal-info">
+            </div>
+    </div>
+</div>
+
+<script>
+const carData = {
+    ae86: {
+        title: "TOYOTA SPRINTER TRUENO AE86",
+        desc: "Легендарная машина Такуми. Оснащена гоночным двигателем 4A-GE. Идеальна для дрифта в крутых поворотах Акины.",
+        specs: "Мощность: ~240 л.с. | Вес: 800 кг | Тип: Хачироку"
+    },
+    fd3s: {
+        title: "MAZDA RX-7 FD3S",
+        desc: "Желтая бестия Кейсуке Такахаши. Мощный роторный двигатель и агрессивный обвес для скоростных подъемов.",
+        specs: "Мощность: ~350 л.с. | Двигатель: 13B-REW | Команда: Project D"
+    }
+};
+
+function showInfo(carKey) {
+    const car = carData[carKey];
+    document.getElementById('modalBody').innerHTML = `
+        <h2>${car.title}</h2>
+        <p>${car.desc}</p>
+        <div class="specs-list"><strong>Спеки:</strong>
+${car.specs}</div>
+    `;
+    document.getElementById('carModal').style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById('carModal').style.display = "none";
+}
+
+// Закрытие кликом по фону
+window.onclick = function(event) {
+    if (event.target == document.getElementById('carModal')) {
+        closeModal();
+    }
+}
+</script>
 </html>
