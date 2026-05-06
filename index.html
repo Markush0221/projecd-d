@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT D | Official Web Site</title>
+    <style>
+        /* Основные стили в духе Initial D */
+        body {
+            background-color: #0b0b0b;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-transform: uppercase;
+        }
+
+        header {
+            border-bottom: 4px solid #ffcc00;
+            padding: 20px;
+            text-align: center;
+            background: linear-gradient(to bottom, #1a1a1a, #0b0b0b);
+        }
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 10px;
+            color: #ffcc00;
+            margin: 0;
+            text-shadow: 2px 2px #000;
+        }
+
+        .subtitle {
+            font-size: 0.8rem;
+            letter-spacing: 5px;
+            color: #888;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 15px;
+            background: #111;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffcc00;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .car-card {
+            border-left: 5px solid #ffcc00;
+            background: #1a1a1a;
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+
+        .car-card:hover {
+            transform: skewX(-2deg) scale(1.02);
+            background: #222;
+        }
+
+        h2 {
+            color: #ffcc00;
+            margin-top: 0;
+        }
+
+        .spec-list {
+            list-style: none;
+            padding: 0;
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        .spec-list li {
+            margin-bottom: 5px;
+            border-bottom: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>PROJECT D</h1>
+    <div class="subtitle">Kanto Expedition / Fastest Street Racing Theory</div>
+</header>
+
+<nav>
+    <a href="#">DRIVERS</a>
+    <a href="#">MACHINES</a>
+    <a href="#">EXPEDITIONS</a>
+    <a href="#">RECORDS</a>
+</nav>
+
+<div class="container">
+    <div class="card-grid">
+        <div class="car-card">
+            <h2>Toyota AE86</h2>
+<img src="ae86.jpg" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid #ffcc00; margin-bottom: 15px;">
+            <p>Downhill Specialist</p>
+            <ul class="spec-list">
+                <li>Driver: Takumi Fujiwara</li>
+                <li>Engine: 4A-GE 20V (Group A Spec)</li>
+                <li>Team: Project D</li>
+            </ul>
+        </div>
+
+        <div class="car-card">
+            <h2>Mazda RX-7 FD3S</h2>
+<img src="fd3s.jpg" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid #ffcc00; margin-bottom: 15px;">
+            <p>Uphill Specialist</p>
+            <ul class="spec-list">
+                <li>Driver: Keisuke Takahashi</li>
+                <li>Engine: 13B-REW (Twin-Turbo)</li>
+                <li>Team: Project D</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="records-section" style="margin-top: 50px;">
+        <h2 style="text-align: center; border-bottom: 2px solid #ffcc00; padding-bottom: 10px;">EXPEDITION RECORDS</h2>
+        <table style="width: 100%; border-collapse: collapse; background: #1a1a1a; margin-top: 20px;">
+            <thead>
+                <tr style="background: #ffcc00; color: #000;">
+                    <th style="padding: 10px; text-align: left;">COURSE (ТРАССА)</th>
+                    <th style="padding: 10px; text-align: left;">DRIVER</th>
+                    <th style="padding: 10px; text-align: left;">RESULT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #333;">
+                    <td style="padding: 10px;">Mount Akina</td>
+                    <td style="padding: 10px;">Takumi Fujiwara</td>
+                    <td style="padding: 10px; color: #ffcc00;">WIN [New Course Record]</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #333;">
+                    <td style="padding: 10px;">Myogi NightKids Home</td>
+                    <td style="padding: 10px;">Keisuke Takahashi</td>
+                    <td style="padding: 10px; color: #ffcc00;">WIN</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #333;">
+                    <td style="padding: 10px;">Happogahara</td>
+                    <td style="padding: 10px;">Takumi Fujiwara</td>
+                    <td style="padding: 10px; color: #ffcc00;">WIN (vs Professional)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<footer style="text-align: center; padding: 40px; color: #444; font-size: 0.7rem; border-top: 1px solid #222; margin-top: 50px;">
+    STREET RACING THEORY / PROJECT D OFFICIAL PORTAL / 2026 by Mark Ivanov
+</footer>
+</html>
