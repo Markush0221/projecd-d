@@ -153,10 +153,11 @@
 </header>
 
 <nav>
+    <nav>
     <a href="#drivers-section">DRIVERS</a>
-    <a href="#">CARS</a>
-    <a href="#">EXPEDITIONS</a>
-    <a href="#">RECORDS</a>
+    <a href="#cars-section">CARS</a>
+    <a href="#expeditions-section">EXPEDITIONS</a>
+    <a href="#records-section">RECORDS</a>
 </nav>
 
 <div class="container">
@@ -171,7 +172,6 @@
                 <li>Team: Project D</li>
             </ul>
         </div>
-
         <div class="car-card">
             <h2>Mazda RX-7 FD3S</h2>
  <img src="fd3s.jpg" onclick="showInfo('fd3s')" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid #ffcc00; margin-bottom: 15px; cursor: pointer;">
@@ -184,7 +184,35 @@
         </div>
     </div>
 </div>
+<div id="drivers-section" class="container" style="margin-top: 50px;">
+    <h2 style="text-align: center; color: #ffcc00; text-transform: uppercase; border-bottom: 2px solid #ffcc00; padding-bottom: 10px;">Project D Drivers</h2>
+    <div class="card-grid">
+        
+        <div class="car-card">
+            <h2>Takumi Fujiwara</h2>
+            <img src="takumi_photo.jpg" onclick="showInfo('takumi')" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid #ffcc00; cursor: pointer;">
+            <p>Downhill Specialist</p>
+            <ul class="spec-list">
+                <li>Team: Akina SpeedStars</li>
+                <li>Car: Toyota AE86</li>
+            </ul>
+        </div>
 
+        <div class="car-card">
+            <h2>Keisuke Takahashi</h2>
+            <div style="position: relative;">
+                <img src="keisuke_photo.jpg" onclick="showInfo('keisuke')" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid #ffcc00; cursor: pointer;">
+                <img src="redsuns_logo.png" style="position: absolute; top: 10px; right: 10px; width: 60px; filter: drop-shadow(0 0 5px black);">
+            </div>
+            <p>Uphill Specialist</p>
+            <ul class="spec-list">
+                <li>Team: RedSuns</li>
+                <li>Car: Mazda RX-7 FD3S</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
 <div class="records-section" style="margin-top: 50px;">
         <h2 style="text-align: center; border-bottom: 2px solid #ffcc00; padding-bottom: 10px;">EXPEDITION RECORDS</h2>
         <table style="width: 100%; border-collapse: collapse; background: #1a1a1a; margin-top: 20px;">
