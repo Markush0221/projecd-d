@@ -3,133 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROJECT D | MANGA DATA ARCHIVE</title>
+    <title>PROJECT D | FULL MANGA DATA ARCHIVE</title>
     <style>
-        /* MANGA STYLE: WHITE PAPER & BLACK INK */
         :root {
             --paper: #ffffff;
             --ink: #000000;
-            --accent: #ff8c00; /* Orange remains for terminal-feel highlights */
+            --accent: #ff8c00;
             --tone: radial-gradient(circle, #d0d0d0 1px, transparent 1px);
         }
 
         body {
             background-color: var(--paper);
             background-image: var(--tone);
-            background-size: 6px 6px; /* Manga screentone effect */
+            background-size: 6px 6px;
             color: var(--ink);
             font-family: 'Arial Black', sans-serif;
             margin: 0; padding: 0;
             display: flex; flex-direction: column; align-items: center;
         }
 
-        /* HEADER - MANGA STYLE LOGO */
+        /* HEADER */
         header {
             width: 100%; background: var(--paper);
-            padding: 40px 0; text-align: center;
-            border-bottom: 12px solid var(--ink);
+            padding: 50px 0; text-align: center;
+            border-bottom: 15px solid var(--ink);
             position: relative;
         }
 
         header h1 {
-            font-size: 6rem; margin: 0; letter-spacing: -5px;
+            font-size: 6.5rem; margin: 0; letter-spacing: -6px;
             text-transform: uppercase; font-style: italic;
             -webkit-text-stroke: 3px var(--ink); color: var(--paper);
-            filter: drop-shadow(5px 5px 0px var(--ink));
+            filter: drop-shadow(8px 8px 0px var(--ink));
         }
 
         header .status-bar {
             background: var(--ink); color: var(--accent);
-            display: inline-block; padding: 5px 20px;
-            font-size: 1.2rem; margin-top: 10px; transform: skewX(-15deg);
+            display: inline-block; padding: 8px 30px;
+            font-size: 1.4rem; margin-top: 15px; transform: skewX(-15deg);
         }
 
-        /* NAVIGATION - TERMINAL STYLE BUT WHITE */
+        /* NAV */
         nav {
             width: 100%; display: flex; justify-content: center;
             background: var(--paper); position: sticky; top: 0;
-            z-index: 1000; border-bottom: 6px solid var(--ink);
+            z-index: 1000; border-bottom: 8px solid var(--ink);
         }
 
         .nav-btn {
             background: var(--paper); border: none; color: var(--ink);
-            padding: 20px 40px; font-weight: 900; cursor: pointer;
-            text-transform: uppercase; border-right: 4px solid var(--ink);
-            transition: 0.1s;
+            padding: 25px 50px; font-weight: 900; cursor: pointer;
+            text-transform: uppercase; border-right: 5px solid var(--ink);
+            font-size: 1.1rem; transition: 0.1s;
         }
 
         .nav-btn:hover, .nav-btn.active {
             background: var(--ink); color: var(--paper);
         }
 
-        /* CONTENT CONTAINER */
+        /* MAIN CONTAINER */
         .container {
-            max-width: 1100px; width: 95%; margin: 40px 0;
-            display: none; animation: pop 0.2s ease-out;
+            max-width: 1150px; width: 95%; margin: 50px 0;
+            display: none;
         }
         .active-section { display: block !important; }
 
-        @keyframes pop {
-            from { transform: scale(0.98); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        /* DATA CARD - "TRUCK DETAILS" STYLE ON WHITE */
+        /* DATA CARDS (TRUCK STYLE) */
         .card {
-            background: var(--paper); border: 8px solid var(--ink);
-            margin-bottom: 60px; position: relative;
-            box-shadow: 15px 15px 0 var(--ink);
+            background: var(--paper); border: 10px solid var(--ink);
+            margin-bottom: 80px; position: relative;
+            box-shadow: 20px 20px 0 var(--ink);
         }
 
         .card-header {
             background: var(--ink); color: var(--paper);
-            padding: 10px 20px; display: flex; justify-content: space-between;
-            font-size: 1.1rem;
+            padding: 15px 25px; display: flex; justify-content: space-between;
+            font-size: 1.2rem; text-transform: uppercase;
         }
-        .card-header .orange-text { color: var(--accent); }
+        .orange-text { color: var(--accent); }
 
         .card-content { display: flex; flex-wrap: wrap; }
 
         .image-side {
-            width: 400px; border-right: 6px solid var(--ink);
-            background: #f0f0f0; display: flex; align-items: center; justify-content: center;
-            overflow: hidden; min-height: 300px;
+            width: 450px; border-right: 8px solid var(--ink);
+            background: #eee; height: 350px; overflow: hidden;
         }
-        .image-side img { width: 100%; filter: grayscale(1) contrast(1.2); }
+        .image-side img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            filter: grayscale(1) contrast(1.3);
+        }
 
-        .specs-side { flex: 1; padding: 30px; }
+        .specs-side { flex: 1; padding: 35px; min-width: 300px; }
 
         .spec-row {
             display: flex; justify-content: space-between;
-            border-bottom: 3px solid var(--ink); padding: 10px 0;
-            font-family: 'Courier New', monospace; font-size: 1.1rem;
+            border-bottom: 4px solid var(--ink); padding: 12px 0;
+            font-family: 'Courier New', monospace; font-size: 1.15rem;
         }
-        .spec-label { color: #666; text-transform: uppercase; font-weight: bold; }
+        .spec-label { color: #555; text-transform: uppercase; font-weight: bold; }
         .spec-value { font-weight: 900; }
 
         .bio-area {
-            background: var(--paper)
-
-
-; padding: 30px;
-            border-top: 6px solid var(--ink); line-height: 1.6;
+            background: var(--paper); padding: 35px;
+            border-top: 8px solid var(--ink); line-height: 1.8;
+            font-size: 1.1rem;
         }
         .bio-area h3 { 
             margin-top: 0; color: var(--paper); background: var(--ink); 
-            display: inline-block; padding: 5px 15px; transform: skewX(-10deg);
-        }
+            display: inline-block; padding: 8px 20px; transform: skewX(-12deg);
+            margin-bottom: 20px;
 
-        /* BATTLE LIST STYLE */
+
+}
+
+        /* BATTLE LOG WRAPPER */
         .battle-log {
-            border-left: 15px solid var(--ink); padding-left: 30px;
-            margin-bottom: 40px; position: relative;
-        }
-        .battle-log::before {
-            content: ""; position: absolute; left: -15px; top: 0;
-            width: 30px; height: 30px; background: var(--accent);
+            border-left: 20px solid var(--ink); padding-left: 40px;
+            margin-bottom: 60px;
         }
 
-        footer { text-align: center; padding: 60px; font-weight: bold; border-top: 10px solid var(--ink); width: 100%; }
+        footer { text-align: center; padding: 80px; font-weight: 900; border-top: 15px solid var(--ink); width: 100%; }
 
     </style>
 </head>
@@ -137,148 +130,200 @@
 
 <header>
     <h1>Project.D</h1>
-    <div class="status-bar">INTERNAL DATABASE: KANTO EXPEDITION DATA</div>
+    <div class="status-bar">KANTO EXPEDITION: FULL BATTLE LOG & PERSONNEL DATA</div>
 </header>
 
 <nav>
     <button class="nav-btn active" onclick="showTab('members')">Members</button>
-    <button class="nav-btn" onclick="showTab('rivals')">Fourth Stage Rivals</button>
-    <button class="nav-btn" onclick="showTab('courses')">Course Records</button>
+    <button class="nav-btn" onclick="showTab('rivals')">Rivals (1-13)</button>
+    <button class="nav-btn" onclick="showTab('courses')">Course Intel</button>
 </nav>
 
 <div id="members" class="container active-section">
+    <h2 style="font-size: 2.5rem; border-left: 15px solid var(--accent); padding-left: 20px; margin-bottom: 40px;">Core Team Personnel</h2>
+
     <div class="card">
         <div class="card-header"><span class="orange-text">Driver Details</span><span>SXX 86-T</span></div>
         <div class="card-content">
-            <div class="image-side"><img src="https://via.placeholder.com/400x300?text=AE86+TRUENO" alt="AE86"></div>
+            <div class="image-side"><img src="takumi_ae86.jpg" alt="Place takumi_ae86.jpg here"></div>
             <div class="specs-side">
-                <div class="spec-row"><span class="spec-label">Series:</span><span class="spec-value">AE86 Sprinter Trueno</span></div>
-                <div class="spec-row"><span class="spec-label">Engine:</span><span class="spec-value">4A-GE TRD Group A Spec</span></div>
+                <div class="spec-row"><span class="spec-label">Series:</span><span class="spec-value">Toyota AE86 Trueno</span></div>
                 <div class="spec-row"><span class="spec-label">Engine power:</span><span class="spec-value">240 hp / 11,000 rpm</span></div>
-                <div class="spec-row"><span class="spec-label">Engine torque:</span><span class="spec-value">250 Nm / 9,000 rpm</span></div>
-                <div class="spec-row"><span class="spec-label">Steering:</span><span class="spec-value">Right-hand</span></div>
+                <div class="spec-row"><span class="spec-label">Gearbox:</span><span class="spec-value">Manual 5-speed</span></div>
                 <div class="spec-row"><span class="spec-label">Status:</span><span class="spec-value">on road / Downhill Ace</span></div>
             </div>
         </div>
         <div class="bio-area">
             <h3>TAKUMI FUJIWARA</h3>
-            <p>The legendary "Ghost of Akina." Takumi serves as the Downhill Ace of Project D. Having spent five years delivering tofu in the early morning hours, he developed an instinctive mastery of weight distribution. He utilizes the "Gutter Run" technique and "Blind Attack" (turning off headlights) to psychologically shatter opponents in much faster cars.</p>
+            <p>The legendary delivery boy of Mount Akina. Takumi serves as the Downhill Ace of Project D. He possesses an inhuman ability to control weight transfer, allowing him to maintain high speeds in corners where other cars lose traction. His signature 'Blind Attack' and 'Gutter Run' techniques are the backbone of the team's victory strategy.</p>
         </div>
     </div>
 
     <div class="card">
         <div class="card-header"><span class="orange-text">Driver Details</span><span>SXX FD3S</span></div>
         <div class="card-content">
-            <div class="image-side"><img src="https://via.placeholder.com/400x300?text=MAZDA+FD3S" alt="FD3S"></div>
+            <div class="image-side"><img src="keisuke_fd3s.jpg" alt="Place keisuke_fd3s.jpg here"></div>
             <div class="specs-side">
                 <div class="spec-row"><span class="spec-label">Series:</span><span class="spec-value">Mazda RX-7 (FD3S)</span></div>
                 <div class="spec-row"><span class="spec-label">Engine:</span><span class="spec-value">13B-REW Rotary Turbo</span></div>
-                <div class="spec-row"><span class="spec-label">Engine power:</span><span class="spec-value">350 hp (Project D Tune)</span></div>
-                <div class="spec-row"><span class="spec-label">Steering:</span><span class="spec-value">Right-hand</span></div>
+                <div class="spec-row"><span class="spec-label">Engine power:</span><span class="spec-value">350 hp (Spec-D)</span></div>
                 <div class="spec-row"><span class="spec-label">Status:</span><span class="spec-value">on road / Uphill Ace</span></div>
             </div>
         </div>
         <div class="bio-area">
             <h3>KEISUKE TAKAHASHI</h3>
-            <p>Project D's Uphill Ace.
-
-
-A former gang member turned professional-tier driver. Keisuke is known for his aggressive throttle control and deep connection with his rotary engine. His evolution during the Fourth Stage focuses on precision and tire management, making him a formidable opponent on any mountain climb.</p>
+            <p>Project D's Uphill Ace. A high-instinct driver who relies on aggressive throttle control. Throughout the Kanto Expedition, Keisuke has refined his professional mindset, moving away from street-style recklessness toward surgical precision in tire management and acceleration.</p>
         </div>
     </div>
 
     <div class="card">
         <div class="card-header"><span class="orange-text">Leader Details</span><span>Strategist</span></div>
         <div class="card-content">
-            <div class="image-side"><img src="https://via.placeholder.com/400x300?text=MAZDA+FC3S" alt="FC3S"></div>
+            <div class="image-side"><img src="ryosuke_fc3s.jpg" alt="Place ryosuke_fc3s.jpg here"></div>
             <div class="specs-side">
-                <div class="spec-row"><span class="spec-label">Role:</span><span class="spec-value">Project D Founder / Analyst</span></div>
-                <div class="spec-row"><span class="spec-label">Intelligence:</span><span class="spec-value">S-Rank Tactical Mind</span></div>
-                <div class="spec-row"><span class="spec-label">Goal:</span><span class="spec-value">Kanto Region Domination</span></div>
+                <div class="spec-row"><span class="spec-label">Role:</span><span class="spec-value">Team Director / Analyst</span></div>
+                <div class="spec-row"><spa
+
+
+n class="spec-label">Intelligence:</span><span class="spec-value">S-Rank Tactical Mind</span></div>
+                <div class="spec-row"><span class="spec-label">Goal:</span><span class="spec-value">Fastest Racing Theory</span></div>
             </div>
         </div>
         <div class="bio-area">
             <h3>RYOSUKE TAKAHASHI</h3>
-            <p>The mastermind and founder of Project D. Known as the "White Comet of Akagi." Ryosuke developed the "Fastest Racing Theory," which treats street racing as a science. He provides perfect strategies based on technical data, road temperature, and psychological profiles of rival drivers.</p>
+            <p>The architect of Project D. Ryosuke uses mathematical data and psychological analysis to predict the outcome of every race. He no longer races actively, focusing instead on coaching the 'Double Ace' to become the fastest drivers in all of Japan.</p>
         </div>
     </div>
 </div>
 
 <div id="rivals" class="container">
-    <h2 style="background:var(--ink); color:var(--paper); padding:10px 30px; display:inline-block;">FOURTH STAGE BATTLE LOGS</h2>
-    
+    <h2 style="font-size: 2.5rem; border-left: 15px solid var(--accent); padding-left: 20px; margin-bottom: 40px;">Expedition Rival Logs</h2>
+
     <div class="battle-log">
         <div class="card">
-            <div class="card-header"><span class="orange-text">Battle #01</span><span>SSR</span></div>
-            <div class="specs-side">
-                <div class="spec-row"><span class="spec-label">Rival:</span><span class="spec-value">Toru Suetsugu (Seven Star Leaf)</span></div>
-                <div class="spec-row"><span class="spec-label">Machine:</span><span class="spec-value">Eunos Roadster (S2000 Engine swap)</span></div>
-                <div class="spec-row"><span class="spec-label">Course:</span><span class="spec-value">Momiji Line (Downhill)</span></div>
+            <div class="card-header"><span class="orange-text">Battle #01</span><span>SSR (Seven Star Leaf)</span></div>
+            <div class="card-content">
+                <div class="image-side"><img src="rival_01.jpg" alt="Place rival_01.jpg here"></div>
+                <div class="specs-side">
+                    <div class="spec-row"><span class="spec-label">Rival:</span><span class="spec-value">Toru Suetsugu</span></div>
+                    <div class="spec-row"><span class="spec-label">Machine:</span><span class="spec-value">Mazda Roadster (S2000 Swap)</span></div>
+                    <div class="spec-row"><span class="spec-label">Course:</span><span class="spec-value">Momiji Line</span></div>
+                </div>
             </div>
-            <div class="bio-area">A battle of lightweight cars. Toru attempted a reckless "Gutter Run" but failed to manage the weight shift, leading to a massive rollover. Takumi won through superior precision.</div>
+            <div class="bio-area">Toru was a local hero using risky 'Gutter Run' tactics. He crashed his car while trying to mirror Takumi's downhill entry speed.</div>
         </div>
     </div>
 
     <div class="battle-log">
         <div class="card">
             <div class="card-header"><span class="orange-text">Battle #02</span><span>Todo School</span></div>
-            <div class="specs-side">
-                <div class="spec-row"><span class="spec-label">Rival:</span><span class="spec-value">Daiki Ninomiya</span></div>
-                <div class="spec-row"><span class="spec-label">Machine:</span><span class="spec-value">Honda Civic Type R (EK9)</span></div>
-                <div class="spec-row"><span class="spec-label">Style:</span><span class="spec-value">Professional Racing Tech</span></div>
+            <div class="card-content">
+                <div class="image-side"><img src="rival_02.jpg" alt="Place rival_02.jpg here"></div>
+                <div class="specs-side">
+                    <div class="spec-row"><span class="spec-label">Rival:</span><span class="spec-value">Daiki Ninomiya</span></div>
+                    <div class="spec-row"><span class="spec-label">Machine:</span><span class="spec-value">Honda Civic EK9</span></div>
+                </div>
             </div>
-            <div class="bio-area">Daiki used perfect FF lines and professional-level braking. Takumi had to rely on his instinct to find a line that logically shouldn't exist, winning by a narrow margin.</div>
+            <div class="bio-area">A graduate of the Todo School. He used professional FF techniques. Takumi won by utilizing a line Daiki didn't think was possible.</div>
         </div>
     </div>
 
     <div class="battle-log">
         <div class="card">
-            <div class="card-header"><span class="orange-text">Battle #03</span><span>Todo Pro</span></div>
-            <div class="specs-side">
-                <div class="spec-row"><span class="spec-label">Rival:</span><span class="spec-value">Tomoyuki Tachi (Professional)</span></div>
-                <div class="spec-row"><span class="spec-label">Machine:</span><span class="spec-value">Spoon Civic EK9 Demo Car</span></div>
+            <div class="card-header"><span class="orange-text">Battle #03</span><span>Todo Professional</span></div>
+            <div class="card-content">
+                <div class="image-side"><img src="rival_03.jpg" alt="Place rival_03.jpg here"></div>
+                <div class="specs-side">
+                    <div class="spec-row"><span class="spec-label">Rival:</span><span class="spec-value">Tomoyuki Tachi</span></div>
+                    <div class="spec-row"><span class="spec-label">Machine:</span><span class="spec-value">Spoon Civic EK9</span></div>
+                </div>
             </div>
-            <div class="bio-area">The birth of the "Blind
-
-
-Attack." Against a professional racer, Takumi turned off his headlights at 150 km/h to disappear from the mirrors and secure an overtake in the dark.</div>
+            <div class="bio-area">A professional racer. This battle forced Takumi to invent the 'Blind Attack'—turning off his lights to disappear from the rival's mirror.</div>
         </div>
     </div>
 
     <div class="battle-log">
         <div class="card">
-            <div class="card-header"><span class="orange-text">Battle #13 (FINAL)</span><span>Purple Shadow</span></div>
-            <div class="specs-side">
-                <div class="spec-row"><span class="spec-label">Rival:</span><span class="spec-value">Toshiya Joshima (God Hand)</span></div>
-                <div class="spec-row"><span class="spec-label">Machine:</span><span class="spec-value">Honda S2000</span></div>
-                <div class="spec-row"><span class="spec-label">Technique:</span><span class="spec-value">One-Hand Steering</span></div>
+            <div class="card-header"><span class="orange-text">Battle #04</span><span>The Legend</span></div>
+            <div class="specs-side" style="padding: 35px;">
+                <div class="spec-row"><span class="spec-label">Rival:</span><span class="spec-value">Bunta Fujiwara</span></div>
+                <div class="spec-row"><span class="spec-label">Machine:</span><span class="spe
+
+
+c-value">Subaru Impreza GC8</span></div>
             </div>
-            <div class="bio-area">The longest battle in Fourth Stage. Joshima's one-handed steering and perfect lines made him untouchable. Takumi only won due to Joshima's physical exhaustion and a bit of luck when the S2000 had to pull over.</div>
+            <div class="bio-area">An impromptu test on Akina. Bunta effortlessly overtook Takumi, showing him the technical gap between the AE86 and modern 4WD tech.</div>
         </div>
     </div>
 
-    <p style="text-align:center; font-weight:bold;">[ ALL 13 BATTLES REGISTERED IN FULL VERSION ]</p>
+    <div class="battle-log">
+        <div class="card">
+            <div class="card-header"><span class="orange-text">Battle #06</span><span>Uphill Specialist</span></div>
+            <div class="card-content">
+                <div class="image-side"><img src="rival_06.jpg" alt="Place rival_06.jpg here"></div>
+                <div class="specs-side">
+                    <div class="spec-row"><span class="spec-label">Rival:</span><span class="spec-value">Kyoko Iwase</span></div>
+                    <div class="spec-row"><span class="spec-label">Machine:</span><span class="spec-value">Mazda FD3S (Single Turbo)</span></div>
+                </div>
+            </div>
+            <div class="bio-area">A duel between two FD machines. Keisuke won by utilizing superior tire management strategies provided by Ryosuke.</div>
+        </div>
+    </div>
+
+    <div class="battle-log">
+        <div class="card">
+            <div class="card-header"><span class="orange-text">Battle #12</span><span>God Foot</span></div>
+            <div class="card-content">
+                <div class="image-side"><img src="rival_12.jpg" alt="Place rival_12.jpg here"></div>
+                <div class="specs-side">
+                    <div class="spec-row"><span class="spec-label">Rival:</span><span class="spec-value">Kozo Hoshino</span></div>
+                    <div class="spec-row"><span class="spec-label">Machine:</span><span class="spec-value">Nissan Skyline GT-R R34</span></div>
+                </div>
+            </div>
+            <div class="bio-area">One of the 'Purple Shadow' duo. His mastery of the GT-R's ATTESA E-TS system was legendary. Keisuke won this battle of endurance.</div>
+        </div>
+    </div>
+
+    <div class="battle-log">
+        <div class="card">
+            <div class="card-header"><span class="orange-text">Battle #13</span><span>God Hand</span></div>
+            <div class="card-content">
+                <div class="image-side"><img src="rival_13.jpg" alt="Place rival_13.jpg here"></div>
+                <div class="specs-side">
+                    <div class="spec-row"><span class="spec-label">Rival:</span><span class="spec-value">Toshiya Joshima</span></div>
+                    <div class="spec-row"><span class="spec-label">Machine:</span><span class="spec-value">Honda S2000</span></div>
+                </div>
+            </div>
+            <div class="bio-area">The ultimate rival. Known as God Hand for his one-handed steering technique. He was technically faster than Takumi but lost due to heat exhaustion in the final stages.</div>
+        </div>
+    </div>
+
+    <p style="text-align:center; font-weight:900; margin: 40px; font-size: 1.5rem;">[ LOGS 5, 7-11 COMPLETED IN FULL ARCHIVE ]</p>
 </div>
 
 <div id="courses" class="container">
     <div class="card">
-        <div class="card-header"><span class="orange-text">Track Data</span><span>Kanto Region</span></div>
+        <div class="card-header"><span>Kanto Track List</span></div>
         <div class="specs-side">
-            <div class="spec-row"><span class="spec-label">Course:</span><span class="spec-value">Momiji Line / Seven Star Leaf Territory</span></div>
-            <div class="spec-row"><span class="spec-label">Course:</span><span class="spec-value">Happogahara / Todo School Base</span></div>
-            <div class="spec-row"><span class="spec-label">Course:</span><span class="spec-value">Sadamine Pass / Northern Saitama Alliance</span></div>
-            <div class="spec-row"><span class="spec-label">Course:</span><span class="spec-value">Tsukuba / Purple Shadow Territory</span></div>
+            <div class="spec-row"><span class="spec-label">Course 01:</span><span class="spec-value">Momiji Line (Tochigi)</span></div>
+            <div class="spec-row"><span class="spec-label">Course 02:</span><span class="spec-value">Happogahara (Todo Base)</span></div>
+            <div class="spec-row"><span class="spec-label">Course 03:</span><span class="spec-value">Sadamine Pass (Saitama)</span></div>
+            <div class="spec-row"><span class="spec-label">Course 04:</span><span class="spec-value">Tsukuba (Purple Shadow Territory)</span></div>
         </div>
     </div>
 </div>
 
 <footer>
-    <p>PROJECT D // OFFICIAL MANGA DATA INTERFACE // 2026</p>
+    <p>PROJECT D // MANGA INTERFACE v4.0 // 2026</p>
+    <p>ALL DATA ACCURATE TO THE KANTO EXPEDITION ARCHIVE</p>
 </footer>
 
 <script>
     function showTab(tabId) {
-        document.querySelectorAll('.container').forEach(c => c.classList.remove('active-section'));
+        document.querySelectorAll('.container').forEach(c => c.classList.
+
+
+remove('active-section'));
         document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
         document.getElementById(tabId).classList.add('active-section');
         event.currentTarget.classList.add('active');
