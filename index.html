@@ -137,6 +137,7 @@
     <button class="nav-btn active" onclick="showTab('members')">Members</button>
     <button class="nav-btn" onclick="showTab('rivals')">Rivals (1-13)</button>
     <button class="nav-btn" onclick="showTab('courses')">Course Intel</button>
+    <button class="nav-btn" onclick="showTab('garage')">Garage</button>
 </nav>
 
 <div id="members" class="container active-section">
@@ -181,11 +182,11 @@
         <div class="card-content">
             <div class="image-side"><img src="ryosuke_fc3s.jpg" alt="Place ryosuke_fc3s.jpg here"></div>
             <div class="specs-side">
-                <div class="spec-row"><span class="spec-label">Role:</span><span class="spec-value">Team Director / Analyst</span></div>
-                <div class="spec-row"><spa
+                <div class="spec-row"><span class="spec-label">Role:</span><span class="spec-value">Team Di
 
 
-n class="spec-label">Intelligence:</span><span class="spec-value">S-Rank Tactical Mind</span></div>
+rector / Analyst</span></div>
+                <div class="spec-row"><span class="spec-label">Intelligence:</span><span class="spec-value">S-Rank Tactical Mind</span></div>
                 <div class="spec-row"><span class="spec-label">Goal:</span><span class="spec-value">Fastest Racing Theory</span></div>
             </div>
         </div>
@@ -247,10 +248,10 @@ n class="spec-label">Intelligence:</span><span class="spec-value">S-Rank Tactica
             <div class="card-header"><span class="orange-text">Battle #04</span><span>The Legend</span></div>
             <div class="specs-side" style="padding: 35px;">
                 <div class="spec-row"><span class="spec-label">Rival:</span><span class="spec-value">Bunta Fujiwara</span></div>
-                <div class="spec-row"><span class="spec-label">Machine:</span><span class="spe
+                <div c
 
 
-c-value">Subaru Impreza GC8</span></div>
+lass="spec-row"><span class="spec-label">Machine:</span><span class="spec-value">Subaru Impreza GC8</span></div>
             </div>
             <div class="bio-area">An impromptu test on Akina. Bunta effortlessly overtook Takumi, showing him the technical gap between the AE86 and modern 4WD tech.</div>
         </div>
@@ -313,6 +314,52 @@ c-value">Subaru Impreza GC8</span></div>
     </div>
 </div>
 
+<div id="garage" class="container">
+    <h2 style="font-size: 2.5rem; border-left: 15px solid var(--accent); padding-left: 20px; margin-bottom: 40px;">Machine Specifications
+
+
+& Garage</h2>
+
+    <div class="card">
+        <div class="card-header"><span class="orange-text">Machine Details</span><span>Project D - Downhill</span></div>
+        <div class="card-content">
+            <div class="image-side"><img src="ae86_full.jpg" alt="Toyota AE86 Trueno"></div>
+            <div class="specs-side">
+                <div class="spec-row"><span class="spec-label">Series:</span><span class="spec-value">AE86 Trueno</span></div>
+                <div class="spec-row"><span class="spec-label">Engine:</span><span class="spec-value">4A-GE TRD Group A</span></div>
+                <div class="spec-row"><span class="spec-label">Power:</span><span class="spec-value">240 hp</span></div>
+                <div class="spec-row"><span class="spec-label">Weight:</span><span class="spec-value">~900kg</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><span class="orange-text">Machine Details</span><span>Project D - Uphill</span></div>
+        <div class="card-content">
+            <div class="image-side"><img src="fd3s_full.jpg" alt="Mazda RX-7 FD3S"></div>
+            <div class="specs-side">
+                <div class="spec-row"><span class="spec-label">Series:</span><span class="spec-value">Mazda FD3S</span></div>
+                <div class="spec-row"><span class="spec-label">Engine:</span><span class="spec-value">13B-REW Twin Rotary</span></div>
+                <div class="spec-row"><span class="spec-label">Power:</span><span class="spec-value">350+ hp</span></div>
+                <div class="spec-row"><span class="spec-label">Aero:</span><span class="spec-value">RE Amemiya Spec</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><span class="orange-text">Rival Machine</span><span>Purple Shadow</span></div>
+        <div class="card-content">
+            <div class="image-side"><img src="r34_full.jpg" alt="Nissan Skyline R34"></div>
+            <div class="specs-side">
+                <div class="spec-row"><span class="spec-label">Series:</span><span class="spec-value">Skyline GT-R R34</span></div>
+                <div class="spec-row"><span class="spec-label">Engine:</span><span class="spec-value">RB26DETT</span></div>
+                <div class="spec-row"><span class="spec-label">Drive:</span><span class="spec-value">ATTESA E-TS (4WD)</span></div>
+                <div class="spec-row"><span class="spec-label">Driver:</span><span class="spec-value">Kozo Hoshino</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <footer>
     <p>PROJECT D // MANGA INTERFACE v4.0 // 2026</p>
     <p>ALL DATA ACCURATE TO THE KANTO EXPEDITION ARCHIVE</p>
@@ -320,10 +367,7 @@ c-value">Subaru Impreza GC8</span></div>
 
 <script>
     function showTab(tabId) {
-        document.querySelectorAll('.container').forEach(c => c.classList.
-
-
-remove('active-section'));
+        document.querySelectorAll('.container').forEach(c => c.classList.remove('active-section'));
         document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
         document.getElementById(tabId).classList.add('active-section');
         event.currentTarget.classList.add('active');
